@@ -19,23 +19,23 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails hanaz = User.builder()
-                .username("hanaz")
+        UserDetails habiba = User.builder()
+                .username("habiba")
                 .password("{noop}123")
                 .roles("ADMIN")
                 .build();
-        UserDetails yara = User.builder()
-                .username("yara")
+        UserDetails bia = User.builder()
+                .username("bia")
                 .password("{noop}123")
                 .roles("USER")
                 .build();
-        return new InMemoryUserDetailsManager(hanaz, yara);
+        return new InMemoryUserDetailsManager(habiba, bia);
     }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/user/**", "/api/v1/role/**").authenticated()
+                        .requestMatchers("/api/v1/user/**", "/api/v1/role/**",  "/swagger-ui.html").authenticated()
                         .requestMatchers("/api/role/admin").hasRole("ADMIN")
                         .requestMatchers("/api/role/user").hasRole("USER")
                         .anyRequest().permitAll())
