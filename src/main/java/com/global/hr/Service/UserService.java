@@ -13,7 +13,6 @@ public class UserService {
     @Autowired
     private  UserRepo userRepo;
     public List<AppUser> findAll(){
-        System.out.println("aaaaaaaaa");
         List<AppUser> users = userRepo.findAll();
         System.out.println(users.size());
         for (AppUser user : users) {
